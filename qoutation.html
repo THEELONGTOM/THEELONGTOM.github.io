@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Quote - Sbanie Holdings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body { font-family: 'Arial', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <nav class="bg-green-800 text-white p-4 sticky top-0 z-10 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">SBANIE HOLDINGS</h1>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="hover:text-green-300">Home</a></li>
+        <li><a href="service.html" class="hover:text-green-300">Services</a></li>
+        <li><a href="contact.html" class="hover:text-green-300">Contact</a></li>
+        <li><a href="quotations.html" class="hover:text-green-300">Get Quote</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12">Request a Free Quote</h2>
+      <div class="max-w-2xl mx-auto">
+        <form id="quoteForm" class="space-y-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="name" class="mt-1 block w-full p-3 border border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" id="email" class="mt-1 block w-full p-3 border border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+            <input type="tel" id="phone" class="mt-1 block w-full p-3 border border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="service" class="block text-sm font-medium text-gray-700">Service Type</label>
+            <select id="service" class="mt-1 block w-full p-3 border border-gray-300 rounded-md" required>
+              <option value="Construction Project">Construction Project</option>
+              <option value="Waste Collection">Waste Collection</option>
+              <option value="Recycling Program">Recycling Program</option>
+              <option value="Site Remediation">Site Remediation</option>
+              <option value="Demolition">Demolition</option>
+            </select>
+          </div>
+          <div>
+            <label for="size" class="block text-sm font-medium text-gray-700">Site Size (in square meters)</label>
+            <input type="number" id="size" class="mt-1 block w-full p-3 border border-gray-300 rounded-md" required min="1">
+          </div>
+          <div>
+            <label for="description" class="block text-sm font-medium text-gray-700">Project Description</label>
+            <textarea id="description" rows="4" class="mt-1 block w-full p-3 border border-gray-300 rounded-md" required></textarea>
+          </div>
+          <button type="submit" class="w-full bg-green-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-green-700">Generate Quote & Invoice</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-green-900 text-white py-3">
+    <div class="container mx-auto text-center">
+      <p class="mb-4">&copy; 2025 Sbanie Holdings. All rights reserved.</p>
+      <div class="flex justify-center space-x-4">
+        
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="transition-colors duration-300 hover:text-blue-300">
+          <span class="sr-only">Facebook</span> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="transition-colors duration-300 hover:text-green-300">
+          <span class="sr-only">Twitter</span> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+        
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="transition-colors duration-300 hover:text-green-300">
+          <span class="sr-only">LinkedIn</span> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+        </a>
+
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="transition-colors duration-300 hover:text-green-300">
+          <span class="sr-only">Instagram</span> <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12 2C8.74 2 8.333.015 7.053.052 5.775.088 5.218.228 4.703.435c-.515.207-.962.478-1.414.93s-.727.899-.934 1.414c-.207.515-.347 1.072-.383 2.35C2.015 8.333 2 8.74 2 12s.015 3.667.052 4.947c.036 1.278.176 1.835.383 2.35.207.515.478.962.934 1.414s.899.727 1.414.934c.515.207 1.072.347 2.35.383C8.333 21.985 8.74 22 12 22s3.667-.015 4.947-.052c1.278-.036 1.835-.176 2.35-.383.515-.207.962-.478 1.414-.934s.727-.899.934-1.414c-.207-.515.347-1.072-.383-2.35C21.985 15.667 22 15.26 22 12s-.015-3.667-.052-4.947c-.036-1.278-.176-1.835-.383-2.35a3.89 3.89 0 00-.934-1.414 3.89 3.89 0 00-1.414-.934c-.515-.207-1.072-.347-2.35-.383C15.667 2.015 15.26 2 12 2zm0 1.622c3.203 0 3.585.012 4.85.07 1.17.053 1.64.218 1.91.332.34.148.583.344.822.583.24.24.435.482.583.822.114.27.279.74.332 1.91.058 1.265.07 1.646.07 4.85s-.012 3.585-.07 4.85c-.053 1.17-.218 1.64-.332 1.91-.148.34-.344.583-.583.822-.24.24-.482.435-.822.583-.27.114-.74.279-1.91.332-1.265.058-1.646.07-4.85.07s-3.585-.012-4.85-.07c-1.17-.053-1.64-.218-1.91-.332a2.23 2.23 0 01-.822-.583 2.23 2.23 0 01-.583-.822c-.114-.27-.279-.74-.332-1.91-.058-1.265-.07-1.646-.07-4.85s.012-3.585.07-4.85c.053-1.17.218-1.64.332-1.91.148-.34.344-.583.583-.822.24-.24.482.435.822.583.27-.114.74-.279 1.91-.332C8.415 3.634 8.797 3.622 12 3.622zM12 7.25a4.75 4.75 0 100 9.5 4.75 4.75 0 000-9.5zM12 15a3 3 0 110-6 3 3 0 010 6zm6.36-7.81a1.146 1.146 0 100-2.292 1.146 1.146 0 000 2.292z" clip-rule="evenodd" />
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const rates = {
+      'Construction Project': 1500,
+      'Waste Collection': 200,
+      'Recycling Program': 100,
+      'Site Remediation': 800,
+      'Demolition': 500
+    };
+
+    // Correct Base64 logo string (placeholder)
+    // REPLACE THIS with the actual Base64 string of your logo.
+    const logoBase64 ='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAIAAABEtEjdAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEfmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSfvu78nIGlkPSdXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQnPz4KPHg6eG1wbWV0YSB4bWxuczp4PSdhZG9iZTpuczptZXRhLyc+CjxyZGY6UkRGIHhtbG5zOnJkZj0naHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyc+CgogPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9JycKICB4bWxuczpBdHRyaWI9J2h0dHA6Ly9ucy5hdHRyaWJ1dGlvbi5jb20vYWRzLzEuMC8nPgogIDxBdHRyaWI6QWRzPgogICA8cmRmOlNlcT4KICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0nUmVzb3VyY2UnPgogICAgIDxBdHRyaWI6Q3JlYXRlZD4yMDI0LTEwLTA2PC9BdHRyaWI6Q3JlYXRlZD4KICAgICA8QXR0cmliOkV4dElkPjZiZjNhYmI5LWYzYjQtNDQzMi1hNWZhLWJmMzhkYWFiODBmYTwvQXR0cmliOkV4dElkPgogICAgIDxBdHRyaWI6RmJJZD41MjUyNjU5MTQxNzk1ODA8L0F0dHJpYjpGYklkPgogICAgIDxBdHRyaWI6VG91Y2hUeXBlPjI8L0F0dHJpYjpUb3VjaFR5cGU+CiAgICA8L3JkZjpsaT4KICAgPC9yZGY6U2VxPgogIDwvQXR0cmliOkFkcz4KIDwvcmRmOkRlc2NyaXB0aW9uPgoKIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PScnCiAgeG1sbnM6ZGM9J2h0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvJz4KICA8ZGM6dGl0bGU+CiAgIDxyZGY6QWx0PgogICAgPHJkZjpsaSB4bWw6bGFuZz0neC1kZWZhdWx0Jz5TQkFOSUUgSE9MRElOR1MgUFRZIExURCAtIDE8L3JkZjpsaT4KICAgPC9yZGY6QWx0PgogIDwvZGM6dGl0bGU+CiA8L3JkZjpEZXNjcmlwdGlvbj4KCiA8cmRmOkRl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7tT15ptvZp4548aNy4zJHE9yRs/i/vvf/z4zrONHh9qlTenq1Jb5zW9+U3Zjq+N+4sSJa6+9tmJmcT9lxL2MuFPX7t2780+ejtH55ptvLrjggsyAdKn8VHXilTqe2Y2eFJ4na8WKFRVP7wpDhgwpO018ddyTvXv35k9t1k7cTxlxLyPudEHmgMJk2LBhixYt2rhx4+rVq/N/Ah07dmzhPPl43XDDDff8ZN68eWm7eNCgQZkxw4cPLzzVQWZVgwcPvrjEyJEjM3M++eSThSvsNO7JU089VdaUXo/77NmzFxTp9CCi8MS9jLjTBa+++mrFEylvw4YNhfN073zuqWX5qbZt25YZduONN5at/9///ndm8KRJkwpH1on7iRMnpk2bVrhU53M/ZcS9jLjTNY888kjN7tx7771lk3Qj7mnzvPB7+1LxMyOrvzN6/PjxmfGFH3+tE/fkP//5T37f0RnifgqJexlxp8vWrFkzfPjwimfUkCFDHn300YqPgHY17jNmzPjyyy/z86TgZr4EKqW2tbW1YvH5HfRLlizJD6sZ92T16tX5BYv7KSPuZcSd7jh48OCyZcsmT56c2TM+evTohQsX7ty5s/rincYrTZs6eMUVV8ybN6/iozr50wLfeuut1VedtrUzF7n44ovz385aP+7pNeyqq67KDBb3U0bcy4g7PXLkyJGWlpZt27aloHd6Sl7odeJeRtyBBibuZU7fuC9cuPCycn//+9/7e4FA58S9zOkb99/+9rcVvxOvvvpqfy8Q6Jy4lxF3cYcGJu5lxF3coYGJexlxF3doYOJeRtzFHRqYuJcRd3GHBibuZcRd3KGBiXsZcRd3aGDiXkbcxR0amLiXEXdxhwYm7mXEXdyhgYl7GXEXd2hg4l5G3Psk7jt37lz3c/v37y8b/Morr3Qc+frrr9e/osOHD6eLL168+NZbb505c+bNN9983333rV27dt++fX202oyNGzeuK7J+/fqXXnqpubl5165dFd/aUWfOt956q+ayC78+u83Bgwczg7dv315/SS0tLRs2bHjggQfmzZs3Z86c+++/f+XKlW+//Xb1F4OU2b1795o1a+bPn58er/SopQA99NBDmzZt+v7777sxW0bZI5Kkm5DW/Omnn5adm75dGlY2SYXM/b958+bMgHQby65xz549mcHpV6jOb464lxH3Pol7l769/uKLL+448oorrqhzFemJdOedd5555pllN+Hqq6+uuNJurzYj8+0Thc4555z02pN60b0563+jxfjx448ePVo4OP9Vq3W+WvrEiRPptXPSpEllN62pqWnu3LkpTDVvWnpBmjFjRtlsw4cPX758eeGXgNdX5xEZOXLk3XffnV5jyiaZNWtWp5PkpSJ3nCSlPDNg8ODB6WWy8Bpnz56dGZyeoXVur7iXEfdiAznuqTgrVqyoyHrmGVL41aPdXm1GnZS0mzJlyr/+9a+uztmlrytaunRp4eBuxD1laPr06XVu11lnnbVq1apOb1d6T1bnUUv3UqcPWYX6j8iwYcOeffbZwkl6Je7J5MmTM2PSm5781aWXmcxXeqWXgcLvts0T9zLiXmzAxj1tmea3caqNGzfuiy++6K3VZnQp7mf82MENGzZ0ac4uxX3IkCGffvppfnBX4759+/bMt7N2at68eRUTfvLJJ2ltNae69tpr89/8V1NXH5H01iQ/SW/FPb1dy4xJrygHDx7MDLvnnnsyw+64446at1fcy4h7sQEb9/TLWv0EK3T55ZcfPny4V1ab0dWUtHnppZfqz9nVLxqdOHFifp9yl+K+b9++rpa9zcqVK8vmLNwbM2LEiLIrKmxuHV19RM4+++z8G4XeinuSf/eTuee/+uqroUOHdhyQXgXr7+kS9zLiXmxgxn3t2rWFq73qqqsWL168atWqJUuWzJw5s/C9/5133tkrq83IpCTdlj/9aMWKFYsWLUqLSe3ILyY9mSv++Nnzb5FO154ZXD/uaZP56quvLpz20ksvTW+bbr/99jSg8E5O/1lYpUOHDg0ePDgzeP369W0//eijj0aPHp356Q033FDn/u/03pswYcK2nzQ3Nz/44IOZkiZPP/10ZpL08vbZz917772ZS6WXn8yYwi/R/eCDDzIXTC9p3333XfuApUuXZgakDfn6t1fcy4h7sQEY9/TMyW+UjR07duvWrZmRLS0t6X19/kblR3ZjtRmdhji9Y0jP3swe1eT666/v9pxly26XIrtz586Og+vHPT30+QknTZqUEtxxWHo4/vCHP+RHFu6cSZfNDMs8yumtTGbAqFGjyu6fap3eey+++GLmuuq8kKS7K3OpdJfWXFJ6rDOXfeqpp9p+lCp/3nnndfzRWWed9d///rf+7RX3MuJebADGfdmyZZk5L7roogMHDhQO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vnGfOnVqxRP41ltvfTSu9evX9/fdnzWQ4z5o0KBzzjnnsssumz179tNPP71///4e31zoc6dv3MeMGVMRkV/84hd1WtOg0gtbf9/9QN8S92LiDjQ0cS8m7kBDE/di4g40NHEvJu5AQxP3YuIONLTTN+6TJk3q78b2G3GH8E7fuP/ud7/r78b2G3GH8MT9dCTuEN7pG/fXXnutvz8o2m8G4CdUgd51+sYdIDBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AECEneAgMQdICBxBwhI3AEC+n8Dp8imXYJ1qgAAAABJRU5ErkJggg== ';
+
+    const form = document.getElementById('quoteForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (form.checkValidity()) {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const size = parseFloat(document.getElementById('size').value);
+        const description = document.getElementById('description').value;
+
+        const rate = rates[service];
+        const total = rate * size;
+
+        // Company Details
+        const companyName = "SBANIE HOLDINGS";
+        const companyAddress = "176 mangweni, kwalugedlane, 1341";
+        const companyEmail = "sbanieholdings@gmail.com";
+        const companyPhone = "+27 79 230 2688";
+        
+        // Generate PDF Invoice
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Add Logo (using the Base64 string directly)
+        doc.addImage(logoBase64, 'PNG', 15, 15, 40, 20); // Adjust size and position as needed
+
+        // Add Company Contact Details
+        doc.setFontSize(10);
+        doc.text(companyName, 150, 20);
+        doc.text(companyAddress, 150, 25);
+        doc.text(`Email: ${companyEmail}`, 150, 30);
+        doc.text(`Phone: ${companyPhone}`, 150, 35);
+        
+        // Add a line separator
+        doc.setLineWidth(0.5);
+        doc.line(15, 50, 195, 50);
+
+        // Add Invoice/Quote title and details
+        doc.setFontSize(18);
+        doc.text('Quotation', 20, 70);
+
+        doc.setFontSize(12);
+        let yPos = 80; 
+
+        doc.text(`Date: ${new Date().toLocaleDateString()}`, 20, yPos);
+        yPos += 10;
+        doc.text(`Client: ${name}`, 20, yPos);
+        yPos += 10;
+        doc.text(`Email: ${email}`, 20, yPos);
+        yPos += 10;
+        doc.text(`Phone: ${phone || 'N/A'}`, 20, yPos);
+        yPos += 10;
+        doc.text(`Service: ${service}`, 20, yPos);
+        yPos += 10;
+        doc.text(`Site Size: ${size} sqm`, 20, yPos);
+        yPos += 10;
+        doc.text(`Description: ${description}`, 20, yPos, { maxWidth: 170 });
+
+        yPos += 20;
+        doc.text(`Rate: R ${rate.toFixed(2)} per sqm`, 20, yPos);
+        yPos += 10;
+        doc.text(`Total Amount: R ${total.toFixed(2)}`, 20, yPos);
+
+        doc.save('sbanie-holdings-quotation.pdf');
+        alert('Quote calculated and quotation generated!');
+      } else {
+        alert('Please fill out all required fields.');
+      }
+    });
+  </script>
+</body>
+</html>
+```
